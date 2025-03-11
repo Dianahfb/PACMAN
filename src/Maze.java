@@ -1,3 +1,5 @@
+import org.academiadecodigo.simplegraphics.pictures.Picture;
+
 public class Maze {
     private static char[] row1  = new char[] {'X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X'};
     private static char[] row2  = new char[] {'X',' ',' ',' ',' ',' ',' ',' ',' ','X',' ',' ',' ',' ',' ',' ',' ',' ','X'};
@@ -8,7 +10,7 @@ public class Maze {
     private static char[] row7  = new char[] {'X','X','X','X',' ','X','X','X','X',' ','X','X','X','X',' ','X','X','X','X'};
     private static char[] row8  = new char[] {'O','O','O','X',' ','X',' ',' ',' ',' ',' ',' ',' ','X',' ','X','O','O','O'};
     private static char[] row9  = new char[] {'X','X','X','X',' ','X',' ','X','X','r','X','X',' ','X',' ','X','X','X','X'};
-    private static char[] row10 = new char[] {'O',' ',' ',' ',' ',' ',' ',' ','p','o','b',' ',' ',' ',' ',' ',' ',' ','O'};
+    private static char[] row10 = new char[] {'O',' ',' ',' ',' ',' ',' ',' ','p','y','b',' ',' ',' ',' ',' ',' ',' ','O'};
     private static char[] row11 = new char[] {'X','X','X','X',' ','X',' ','X','X','X','X','X',' ','X',' ','X','X','X','X'};
     private static char[] row12 = new char[] {'O','O','O','X',' ','X',' ',' ',' ',' ',' ',' ',' ','X',' ','X','O','O','O'};
     private static char[] row13 = new char[] {'X','X','X','X',' ','X',' ','X','X','X','X','X',' ','X',' ','X','X','X','X'};
@@ -25,7 +27,6 @@ public class Maze {
     public static char[][] getMatrix() {
         return matrix;
     }
-
 }
 
 

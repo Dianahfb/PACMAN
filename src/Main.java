@@ -1,40 +1,72 @@
 import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Ellipse;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
+
+import javax.sound.sampled.*;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class Main {
     public static void main(String[] args) {
-        
-        
-        
-        Rectangle field = new Rectangle(10, 10, 900, 600);
+
+        /*File file = new File("resources/pacman_beginning.wav");
+        AudioInputStream audioStream = null;
+        try {
+            audioStream = AudioSystem.getAudioInputStream(file);
+        } catch (UnsupportedAudioFileException | IOException e) {
+            throw new RuntimeException(e);
+        }
+        Clip clip = null;
+        try {
+            clip = AudioSystem.getClip();
+        } catch (LineUnavailableException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            clip.open(audioStream);
+        } catch (LineUnavailableException | IOException e) {
+            throw new RuntimeException(e);
+        }
+        clip.loop(Clip.LOOP_CONTINUOUSLY);*/
+
+        InputStream inputStream = Main.class.getClassLoader().getResourceAsStream("resources/pacman_beginning.wav");
+
+        if (inputStream == null) {
+            throw new RuntimeException("Resource not found: resources/pacman_beginning.wav");
+        }
+        BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
+
+        AudioInputStream audioStream = null;
+        try {
+            audioStream = AudioSystem.getAudioInputStream(bufferedInputStream);
+        } catch (UnsupportedAudioFileException | IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Clip clip = null;
+        try {
+            clip = AudioSystem.getClip();
+        } catch (LineUnavailableException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            clip.open(audioStream);
+        } catch (LineUnavailableException | IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
+
+        Rectangle field = new Rectangle(0, 0, 570, 630);
         field.draw();
-        /*rectangle.setColor(Color.MAGENTA);
-        rectangle.fill();*/
-        
-        /*Rectangle square = new Rectangle(100,400, 20, 20);
-        square.setColor(Color.MAGENTA);
-        square.fill();
-        
-        Ellipse ball = new Ellipse(150, 400, 20, 20);
-        ball.setColor(Color.GREEN);
-        ball.fill();
-        
-        Picture potato = new Picture(200, 150, "resources/mrsPotatoHead.jpg");
-        potato.draw();
-        potato.translate(200,100);*/
-       
-       PotatoHead potatoHead = new PotatoHead(new Picture(200, 150, "resources/mrsPotatoHead.jpg"));
-        
-/*        for (int i = 0; i < 50; i++) {
-            potatoHead.moveRight();
-        }*/
-      
-      MyKeyboard myKeyboard = new MyKeyboard();
-      myKeyboard.init();
-      myKeyboard.setPotatoHead(potatoHead);
-      
-      
+        field.setColor(Color.BLACK);
+        field.fill();
+
+        GameBoard gameBoard = new GameBoard();
+        gameBoard.start();
     }
 }

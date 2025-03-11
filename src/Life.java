@@ -1,15 +1,15 @@
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class Lifes {
+public class Life {
     public Picture picture;
 
 
-    public Lifes(Picture picture) {
+    public Life(Picture picture) {
         this.picture = picture;
     }
 
-    public  void noMoreLifes() {
-        picture.delete();
+    public void removeLife() {
+        this.picture.delete();
     }
 
 }
